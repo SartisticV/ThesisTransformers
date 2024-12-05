@@ -22,5 +22,5 @@ python -u main.py \
     --look_forward_twice \
     --interval 5 \
     --batch_size 1 \
-    --num_classes 2 \
+    --num_classes 11 \
     ${PY_ARGS} | tee ${EXP_DIR}/log.train.$T
