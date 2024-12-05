@@ -6,5 +6,5 @@ GPUS_PER_NODE=4 ./tools/run_dist_slurm.sh gpua16 h_deformable_detr 4 configs/two
 --backbone video_swin_tiny \
 --pretrained2d \
 --fusion enc \
---num_ref_frames 3 \
---stride 2
+--num_ref_frames 5 \
+--stride 1
