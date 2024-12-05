@@ -179,13 +179,9 @@ class DeformableDETR(nn.Module):
             _len_srcs = len(srcs)
             for l in range(_len_srcs, self.num_feature_levels):
                 if l == _len_srcs:
-                    print('before', features[-1].tensors.shape)
                     src = self.input_proj[l](features[-1].tensors)
-                    print('after', src.shape)
                 else:
-                    print('before_else', features[-1].tensors.shape)
                     src = self.input_proj[l](srcs[-1])
-                    print('after_else', src.shape)
                 m = samples.mask
                 mask = F.interpolate(m[None].float(), size=src.shape[-2:]).to(
                     torch.bool
