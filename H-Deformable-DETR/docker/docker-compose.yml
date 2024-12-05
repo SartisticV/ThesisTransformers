@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  hdef:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: "${IMAGE_NAME}"
+    container_name: "${CONTAINER_NAME}"
+    #command: bash /project/docker/entrypoint.sh # optional set here your command or entry point to run
+    shm_size: "32gb"
+    runtime: nvidia
+    stdin_open: true # docker run -i
+    tty: true # docker run -t
+    ports: # modify for ports your want to map
+      - "${PORT_SSH}:22"
+      - "${PORT_JUPYTER}:8888"
+      - "${PORT_TBOARD}:6006"
+      - "${PORT_51}:5151"
+    environment:
+      - HOME=/root
+      - USER=$USER
+      - NVIDIA_VISIBLE_DEVICES=${VIS_GPU_DEVICES}
+    volumes: # modify dirs you want to mount to docker
+      - "${PROJECT_DIR}:/hdef"
+      - "${DATA_DIR}:/data"
+      - "${GIT_DIR}:/git"
+      - "${DISKSTATION_DIR}:/diskstation"
+      #- /usr/local/certificates:/certificates
+      #- $HOME/.ssh/authorized_keys:/root/.ssh/authorized_keys
