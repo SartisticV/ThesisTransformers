@@ -6,5 +6,5 @@ GPUS_PER_NODE=1 ./tools/run_dist_launch.sh 1 configs/two_stage/deformable-detr-h
 --backbone video_swin_tiny \
 --pretrained2d \
 --fusion enc \
---num_ref_frames 3 \
---stride 2
+--num_ref_frames 5 \
+--stride 1
